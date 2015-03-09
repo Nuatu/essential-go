@@ -13,8 +13,8 @@ func main() {
 	ints := []int{1, 2, 3, 4, 5}
 	fmt.Println("new slice:", ints)
 
-	ints = append(ints, 6)
-	fmt.Println("appended slice:", ints)
+	// ints = append(ints, 6)
+	// fmt.Println("appended slice:", ints)
 
 	fmt.Println("0-2:", ints[:2])
 	fmt.Println("2-4:", ints[2:4])
@@ -23,4 +23,14 @@ func main() {
 	for key, val := range ints {
 		fmt.Println(key, val)
 	}
+
+	sum := func(slice []int) (subtotal int) {
+		for _, val := range slice {
+			subtotal += val
+		}
+		fmt.Println("Sum of Slice:", subtotal)
+		return
+	}
+
+	sum([]int{5, 4, 1, 3, 2})
 }
