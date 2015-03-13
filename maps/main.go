@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
 
@@ -11,19 +13,27 @@ func main() {
 	age["liz"] = 29
 	fmt.Println(age)
 
-	fmt.Println("Allie's age:", age["allie"])
-
 	delete(age, "jj")
 	fmt.Println(age)
+	fmt.Println("Allie's age:", age["allie"])
 
-	m := map[string]int{
-		"a": 1,
-		"b": 2,
-		"c": 3,
+	people := map[string]int{
+		"jeremy": 24,
+		"jordie": 22,
+		"josh":   27,
 	}
-	fmt.Println(m)
+	fmt.Println(people)
+	fmt.Println("Jeremy's age:", people["jeremy"])
 
-	for pos, num := range m {
-		fmt.Printf("%v is associated with %v", pos, num)
+	k := keys(people)
+	fmt.Println(k)
+}
+
+func keys(m map[string]int) []string {
+	names := []string{}
+
+	for name, _ := range m {
+		names = append(names, name)
 	}
+	return names
 }
