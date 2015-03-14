@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 type point struct {
 	x, y int
@@ -8,6 +10,14 @@ type point struct {
 
 func NewPoint(x, y int) point {
 	return point{x, y}
+}
+
+type circle struct {
+	radius float64
+}
+
+func (c circle) diameter() float64 {
+	return 2 * c.radius
 }
 
 type rect struct {
@@ -29,6 +39,14 @@ func main() {
 		width:  200,
 		height: 400,
 	}
-	fmt.Println(r)
-	fmt.Println(r.area())
+
+	c := circle{
+		radius: 2.5,
+	}
+	fmt.Println("rect height: ", r.height)
+	fmt.Println("rect width: ", r.width)
+	fmt.Println("rect area: ", r.area())
+	fmt.Println("circle radius: ", c.radius)
+	fmt.Println("circle diameter: ", c.diameter())
+
 }
