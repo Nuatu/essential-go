@@ -5,6 +5,8 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
+
+	"github.com/russross/blackfriday"
 )
 
 func main() {
@@ -21,5 +23,7 @@ func main() {
 	if err != nil {
 		log.Fatalln(err)
 	}
+
+	data = blackfriday.MarkdownCommon(data)
 	fmt.Println(string(data))
 }
