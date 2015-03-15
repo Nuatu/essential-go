@@ -1,7 +1,9 @@
 package pages
 
 import (
+	"io"
 	"io/ioutil"
+	"text/template"
 
 	"github.com/russross/blackfriday"
 )
@@ -19,6 +21,15 @@ func NewPage(filename string) (*Page, error) {
 	// This return statement calls p.load first
 	// then returns p
 	return p, p.load()
+}
+
+func (p *Page) Render(layout string, w io.Writer) error {
+	t, err := template.ParseFiles(layout)
+	if err != nil {
+		return err
+	}
+
+	return t.Execute(w, p)
 }
 
 func (p *Page) load() error {
