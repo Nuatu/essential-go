@@ -2,11 +2,10 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
 	"log"
 	"os"
 
-	"github.com/russross/blackfriday"
+	"github.com/nuatu/essential-go/generator/pages"
 )
 
 func main() {
@@ -19,11 +18,10 @@ func main() {
 	}
 
 	filename := os.Args[1]
-	data, err := ioutil.ReadFile(filename)
+	p, err := pages.NewPage(filename)
 	if err != nil {
 		log.Fatalln(err)
 	}
 
-	data = blackfriday.MarkdownCommon(data)
-	fmt.Println(string(data))
+	fmt.Println(p)
 }
